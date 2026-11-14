@@ -1,0 +1,33 @@
+import numpy as np
+
+# (1) 행렬 A와 B 정의
+A = np.array([[0, 0, 0],
+              [0, 2, 5],
+              [0, 0, -1]], dtype=float)
+
+B = np.array([[4, 0, 0],
+              [0, 0, 0],
+              [1, 0, -3]], dtype=float)
+
+# 고유값 계산
+A_eigenvalues, _ = np.linalg.eig(A)
+B_eigenvalues, _ = np.linalg.eig(B)
+
+# 고유값 정렬
+A_order = np.argsort(A_eigenvalues)[::-1]
+A_eigenvalues = A_eigenvalues[A_order]
+
+B_order = np.argsort(B_eigenvalues)[::-1]
+B_eigenvalues = B_eigenvalues[B_order]
+
+A_eigenvalues = np.real(A_eigenvalues)
+B_eigenvalues = np.real(B_eigenvalues)
+
+# 출력 설정 (소수점 찌꺼기나 지수 형태 방지)
+np.set_printoptions(precision=4, suppress=True, floatmode="fixed")
+
+print("A의 고유값 =")
+print(A_eigenvalues)
+
+print("\nB의 고유값 =")
+print(B_eigenvalues)

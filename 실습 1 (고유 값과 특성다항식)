@@ -1,0 +1,16 @@
+import numpy as np 
+
+A = np.array([[2, 3],
+          [3, -6]],
+          dtype=float)
+
+#고유값과 고유벡터 계산
+eigenvalues, X = np.linalg.eig(A)
+
+#특성 다항식 계수 구하기
+coeffs = np.poly(A)
+
+#출력
+print("고유값 =", np.real(eigenvalues))
+print("\n특성다항식 계수 =", coeffs)
+print("\n특성다항식 =", "λ^2 + ({})λ + ({})".format(coeffs[1], coeffs[2]))
